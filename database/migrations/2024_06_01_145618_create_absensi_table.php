@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('absensi', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('role', ['admin', 'siswa']);
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->enum('status', ['hadir', 'tidak_hadir','izin']); 
+            $table->string("keterangan")->nullable();
+            $table->date('tanggal');
+            $table->foreignID('user_id')->references('id')->on('users')->onDelete('cascade')->index('user_foreignId');
             $table->timestamps();
         });
-
-   
     }
 
     /**
@@ -29,7 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-     
+        Schema::dropIfExists('absensi');
     }
 };
