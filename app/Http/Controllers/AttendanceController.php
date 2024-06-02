@@ -57,17 +57,27 @@ class AttendanceController extends Controller
 
     }
 
+    public function edit(Attendance $attendance){
+        
+        $students = Students::all();
+        $title = 'Edit Absen Siswa';
+        return view('attendance.edit', compact('attendance','students', 'title'));
+    }
+
     public function update(Request $request, Attendance $attendance)
     {
         $validatedData = $request->validate([
             'status' => ['required', Rule::in(['present', 'absent', 'excused'])],
             'description' => 'nullable|string',
-            'date' => 'required|date|unique:attendance,date',
+            'date' => [
+                'required',
+                'date',
+                Rule::unique('attendance')->ignore($attendance->id),
+            ],
             'student_id' => 'required|exists:students,id',
         ], [
             'date.unique' => 'Kehadiran untuk tanggal ini sudah ada.'
         ]);
-
       
         $attendance->update($validatedData);
 

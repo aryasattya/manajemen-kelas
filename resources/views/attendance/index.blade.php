@@ -29,13 +29,24 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             @if (session('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{ session('success') }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+        
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                             <table id="categories" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -74,9 +85,8 @@
                                         
                                             <td>
 
-                                                <a href=""
-                                                    class="btn btn-warning btn-sm">Edit</a>
-                                                    <form id="delete-form-{{ $data->id }}" action="" method="POST" style="display:inline;">
+                                                <a href="{{route('attendance.edit', $data->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                                    <form id="delete-form-{{ $data->id }}" action="{{route('attendance.destroy', $data->id)}}" method="POST" style="display:inline;">
                                                       @csrf
                                                       @method('DELETE')
                                                       <button type="button" class="btn btn-danger btn-sm" onclick="confirmDeletion({{ $data->id }})">Hapus</button>
