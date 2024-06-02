@@ -96,19 +96,15 @@ class StudentsController extends Controller
 
     public function absen(Students $student)
     {
-        // Mendapatkan waktu sekarang
+        
         $currentTime = Carbon::now();
 
-        // Mengatur status ke "present"
         $status = 'present';
 
-        // Mengatur tanggal dengan tanggal sekarang
         $date = $currentTime->toDateString();
 
-        // Mengatur jam dengan jam sekarang
         $watcht = $currentTime->toTimeString();
 
-        // Menentukan keterangan berdasarkan waktu absen
         if ($currentTime->lte(Carbon::parse('07:30:00'))) {
             $description = 'Tepat waktu';
         } elseif ($currentTime->lte(Carbon::parse('09:00:00'))) {

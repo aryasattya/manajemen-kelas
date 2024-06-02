@@ -29,16 +29,7 @@
                                     <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="role">Role</label>
-                                    <select name="role" id="role" class="form-control">
-                                     
-                                            <option value="student" class="form-control">Siswa  </option>
-                                            <option value="admin" class="form-control">Admin </option>
-                                          
-                                      
-                                    </select>
-                                </div>
+                            
                                 
 
                                 <div class="form-group">
