@@ -13,47 +13,52 @@
                 <div class="col-md-4">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h1 class="card-title">{{ $title }}</h1>
+                            <h1 class="card-title font-weight-bold">{{ $title }}</h1>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('users.store') }}" method="POST">
+                        <form action="{{ route('students.store') }}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}">
+                                    <label for="name">Nama siswa</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                                    <label for="nisn">NISN</label>
+                                    <input type="nisn" class="form-control" id="nisn" name="nisn" value="{{ old('nisn') }}" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="role">Role</label>
-                                    <select name="role" id="role" class="form-control">
-                                     
-                                            <option value="student" class="form-control">Siswa  </option>
-                                            <option value="admin" class="form-control">Admin </option>
-                                          
-                                      
-                                    </select>
+                                    <label for="major">Jurusan</label>
+                                    <input type="major" class="form-control" id="major" name="major" value="{{ old('nisn') }}" required>
                                 </div>
-                                
 
                                 <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" >
+                                    <label for="address">Alamat</label>
+                                    <input type="address" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="phone">No.Hp</label>
+                                    <input type="phone" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
+                                </div>
+
+                               
+                                    <div class="form-group">
+                                        <label for="user_id">Username</label>
+                                        <select name="user_id" id="user_id" class="form-control">
+                                            @foreach ($users as $item)
+                                                <option value="{{ $item->id }}" class="form-control">{{ $item->username }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                               
 
                               
-                                 
-                                
-
-                                <div class="form-group">
-                                    <label for="password_confirmation">Konfirmasi Password</label>
-                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
-                                </div>
+                                   
+                        
                                                     
                             </div>
                             <div class="card-footer">
@@ -66,9 +71,9 @@
 
                 <!-- Daftar User di Kanan -->
                 <div class="col-md-8">
-                    <div class="card card-success">
+                    <div class="card card-warning">
                         <div class="card-header">
-                            <h1 class="card-title">{{$title}}</h1>
+                            <h1 class="card-title font-weight-bold">{{$title}}</h1>
                             <!-- Search form -->
                             <form id="search-form" class="form-inline float-right" action="{{ route('users.index') }}" method="GET">
                                 <div class="input-group">
@@ -103,24 +108,25 @@
                             <table id="users" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Username</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
+                                        <th>no.</th>
+                                        <th>Nama</th>
+                                        <th>Nisn</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $data)
+                                    @foreach ($students as $data)
                                         <tr>
-                                            <td>{{ $data->username }}</td>
-                                            <td>{{ $data->email }}</td>
-                                            <td>{{ $data->role }}</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $data->name }}</td>
+                                            <td>{{ $data->nisn }}</td>
                                   
             
                                             </td>
                                             <td>
-                                                <a href="{{ route('users.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                <form id="delete-form-{{ $data->id }}" action="{{ route('users.destroy', $data->id) }}" method="POST" style="display:inline;">
+                                                <a href="{{ route('students.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="{{ route('students.show', $data->id) }}" class="btn btn-info btn-sm">Detail</a>
+                                                <form id="delete-form-{{ $data->id }}" action="{{ route('students.destroy', $data->id) }}" method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" class="btn btn-danger btn-sm" onclick="confirmDeletion({{ $data->id }})">Hapus</button>

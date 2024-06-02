@@ -38,22 +38,22 @@
             <a href="#" class="nav-link {{ request()->is('categories') ? 'active' : '' }}" >
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Kategori
+                Absensi Siswa
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link {{ request()->is('categories') ? 'active' : '' }}">
+                <a href="{{route('students.index')}}" class="nav-link {{ request()->is('students') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Semua Kategori</p>
+                  <p>Daftar Absensi</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="" class="nav-link {{ request()->is('categories/create') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tambah kategori</p>
+                  <p>Tambah Absensi</p>
                 </a>
               </li>
 
@@ -66,7 +66,14 @@
          
 
 
-     
+          <li class="nav-item">
+            <a href="{{route('students.index')}}" class="nav-link {{ request()->is('students*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Siswa
+              </p>
+            </a>
+          </li>
          
 
           <li class="nav-item">
