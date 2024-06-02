@@ -31,7 +31,7 @@ class AttendanceController extends Controller
         $title = 'Daftar siswa';
         $attendance = $query->with('student')->get();
 
-        return view('students.index', compact('attendance', 'title','users'));
+        return view('attendance.index', compact('attendance', 'title'));
     }
 
     public function create(){
