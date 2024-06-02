@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('class_cash_fund', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('students_id')->constrained('students')->onDelete('cascade');
+            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
             $table->enum('status', ['paid', 'unpaid']); 
             $table->date('date'); 
+            $table->double('amount'); 
             $table->timestamps(); 
         });
     }

@@ -30,4 +30,9 @@ class Students extends Model
     {
         return $this->hasMany(Attendance::class);
     }
+
+    public function ClassCashFund()
+    {
+        return $this->hasMany(ClassCashFUnd::class);
+    }
 }

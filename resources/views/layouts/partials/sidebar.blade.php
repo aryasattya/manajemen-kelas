@@ -74,6 +74,15 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{route('classCashFund.index')}}" class="nav-link {{ request()->is('classCashFund*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Uang Kas
+              </p>
+            </a>
+          </li>
          
 
           <li class="nav-item">
