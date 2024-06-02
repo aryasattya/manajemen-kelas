@@ -53,9 +53,23 @@
                                     @foreach ($attendance as $data)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{ $data->status }}</td>
+                                            <td>{{ $data->student->name }}</td>
+
+                                            <td>
+                                                @if($data->status == 'present')
+                                                    Hadir
+                                                @elseif($data->status == 'absent')
+                                                    Tidak Hadir
+                                                @elseif($data->status == 'excused')
+                                                    Izin
+                                                @else
+                                                    {{ $data->status }}
+                                                @endif
+                                            </td>
+
+                                            
                                             <td>{{ $data->description }}</td>
-                                            <td>Jam</td>
+                                            <td>{{ $data->watcht}}</td>
                                             <td>{{$data->date}}</td>
                                         
                                             <td>

@@ -26,8 +26,8 @@ class Students extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function attendance()
+    public function attendances()
     {
-        return $this->belongsTo(Attendance::class);
+        return $this->hasMany(Attendance::class);
     }
 }

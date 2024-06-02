@@ -16,16 +16,15 @@ class AttendanceController extends Controller
 
         if ($request->filled('search')) {
             $search = $request->input('search');
-            $query->whereHas('attendance', function ($q) use ($search) {
-                $q->where('status', 'like', '%' . $search . '%');
-                $q->orWhere('description', 'like', '%' . $search . '%');
-                $q->orWhere('date', 'like', '%' . $search. '%');
             
+            $query->where(function ($q) use ($search) {
+                $q->where('status', 'like', '%' . $search . '%')
+                  ->orWhere('description', 'like', '%' . $search . '%')
+                  ->orWhere('date', 'like', '%' . $search . '%');
             })
-            ->orWhereHas('students', function ($q) use ($search) {
+            ->orWhereHas('student', function ($q) use ($search) {
                 $q->where('name', 'like', '%' . $search . '%');
             });
-            
         }
 
         $title = 'Daftar siswa';
@@ -46,6 +45,7 @@ class AttendanceController extends Controller
             'status' => ['required', Rule::in(['present', 'absent', 'excused'])],
             'description' => 'nullable|string',
             'date' => 'required|date|unique:attendance,date',
+            'watcht' => 'required',
             'student_id' => 'required|exists:students,id',
         ], [
             'date.unique' => 'Kehadiran untuk tanggal ini sudah ada.'

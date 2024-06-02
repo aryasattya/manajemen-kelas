@@ -51,7 +51,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link {{ request()->is('attendance/create') ? 'active' : '' }}">
+                <a href="{{route('attendance.create')}}" class="nav-link {{ request()->is('attendance/create') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Absensi</p>
                 </a>

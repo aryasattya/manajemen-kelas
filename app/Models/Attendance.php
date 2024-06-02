@@ -13,13 +13,15 @@ class Attendance extends Model
 
     protected $fillable = [
         'status',
+        'watcht',
         'description',
         'date',
+        'student_id',
        
     ];
 
     public function student()
     {
-        return $this->hasMany(Students::class);
+        return $this->belongsTo(Students::class);
     }
 }
