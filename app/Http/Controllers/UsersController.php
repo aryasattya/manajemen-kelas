@@ -30,14 +30,12 @@ class UsersController extends Controller
     {
         $request->validate([
             'username' => 'required|string|max:255',
-            'role' => 'required|in:admin,student',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
 
         $user = new User([
             'username' => $request->username,
-            'role' => $request->role,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
@@ -61,7 +59,6 @@ class UsersController extends Controller
 
         $request->validate([
             'username' => 'sometimes|required|string|max:255',
-            'role' => 'sometimes|required|in:admin,student',
             'email' => 'sometimes|required|string|email|max:255|unique:users,email,'.$user->id,
             'password' => 'sometimes|nullable|string|min:8',
         ]);
@@ -70,7 +67,6 @@ class UsersController extends Controller
 
         $user->update([
             'username' => $request->input('username'),
-            'role' => $request->input('role'),
             'email' => $request->input('email'),
             'password' => $request->input('password') ? bcrypt($request->input('password')) : $user->password,
         ]);
