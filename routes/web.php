@@ -10,5 +10,6 @@ use App\Http\Controllers\StudentsController;
 Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 Route::resource('users', UsersController::class);
 Route::resource('students', StudentsController::class);
+Route::post('students/{student}/attendance', [StudentsController::class, 'absen'])->name('students.absen');
 Route::resource('attendance', AttendanceController::class);
 

@@ -47,6 +47,8 @@
                                 </ul>
                             </div>
                         @endif
+
+                        
                             <table id="categories" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -91,6 +93,8 @@
                                                       @method('DELETE')
                                                       <button type="button" class="btn btn-danger btn-sm" onclick="confirmDeletion({{ $data->id }})">Hapus</button>
                                                   </form>
+
+                                                
                                             </td>
                                         </tr>
                                     @endforeach

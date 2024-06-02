@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\Students;
+use App\Models\Attendance;
 use App\Models\User;
+
+use Carbon\Carbon;
 
 class StudentsController extends Controller
 {
@@ -95,9 +98,6 @@ public function edit(Students $student){
     return view('students.edit', compact('student', 'title', 'users'));
 }
 
-public function absen(Students $student){
-
-}
 
 public function destroy(Students $student)
 {
@@ -105,4 +105,50 @@ public function destroy(Students $student)
 
     return redirect()->route('students.index')->with('success', 'Siswa berhasil di hapus.');
 }
+
+
+public function absen( Students $student)
+{
+    // Mendapatkan waktu sekarang
+    $currentTime = Carbon::now();
+
+    // Mengatur status ke "present"
+    $status = 'present';
+
+    // Mengatur tanggal dengan tanggal sekarang
+    $date = $currentTime->toDateString();
+
+    // Mengatur jam dengan jam sekarang
+    $watcht = $currentTime->toTimeString();
+
+    // Menentukan keterangan berdasarkan waktu absen
+    if ($currentTime->lte(Carbon::parse('07:30:00'))) {
+        $description = 'Tepat waktu';
+    } elseif ($currentTime->lte(Carbon::parse('09:00:00'))) {
+        $description = "Terlambat";
+    } else {
+        return redirect()->route('students.index')->with('error', 'Waktu absen telah berakhir.');
+    }
+
+    
+
+
+
+
+    $attendance = new Attendance([
+        'status' => $status,
+        'description' => $description,
+        'date' => $date,
+        'watcht' => $watcht,
+        'student_id' => $student->id,
+
+    ]);
+
+    $attendance->save();
+ 
+    return redirect()->route('attendance.index')->with('success', 'Siswa berhasil Absen');
+}
+
+
+
 }

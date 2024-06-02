@@ -95,16 +95,32 @@
                                 </div>
                             @endif
 
+                            @if (session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+
                             @if ($errors->any())
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
+
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                             @endif
+                            
+
+                         
                             <table id="users" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -122,16 +138,22 @@
                                             <td>{{ $data->nisn }}</td>
                                   
             
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('students.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                <a href="{{ route('students.show', $data->id) }}" class="btn btn-info btn-sm">Detail</a>
+                                            
+                                            <td class="d-flex">
+                                                <a href="{{ route('students.edit', $data->id) }}" class="btn btn-warning btn-sm mr-1">Edit</a>
+                                                <a href="{{ route('students.show', $data->id) }}" class="btn btn-info btn-sm mr-1">Detail</a>
                                                 <form id="delete-form-{{ $data->id }}" action="{{ route('students.destroy', $data->id) }}" method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" class="btn btn-danger btn-sm" onclick="confirmDeletion({{ $data->id }})">Hapus</button>
+                                                    <button type="button" class="btn btn-danger btn-sm mr-1" onclick="confirmDeletion({{ $data->id }})">Hapus</button>
+                                                </form>
+                                            
+                                                <form action="{{ route('students.absen', ['student' => $data->id]) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-success btn-sm mr-1">Absen</button>
                                                 </form>
                                             </td>
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>
