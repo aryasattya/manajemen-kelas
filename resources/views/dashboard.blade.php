@@ -29,12 +29,16 @@
               <!-- Small box 1 -->
               <div class="small-box bg-danger p-4">
                 <div class="inner">
-                  <h3>jumlah transaksi</h3>
-                  <p>Satya Arya</p>
+                  <h3>jumlah Siswa</h3>
+                  <h3>{{$studentCount}}</h3>
+                  
                 </div>
                 <div class="icon">
-                  <i class="ion ion-bag"></i>
+                  <i class="ion ion-stats-bars"></i>
+
                 </div>
+                <a href="" class="small-box-footer">Details <i class="fas fa-arrow-circle-right"></i></a>
+
               </div>
             </div>
             
@@ -42,8 +46,8 @@
               <!-- Small box 2 -->
               <div class="small-box bg-warning p-4">
                 <div class="inner">
-                  <h3>Jumlah Transaksi</h3>
-                  <p></p>
+                  <h3>Jumlah Absensi</h3>
+                  <h3>{{$attendanceCount}}</h3>                  
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
@@ -56,8 +60,8 @@
                 <!-- Small box 2 -->
                 <div class="small-box bg-success p-4">
                   <div class="inner">
-                    <h3>Jumlah Transaksi</h3>
-                    <p></p>
+                    <h3>Jumlah Uang Kas</h3>
+                    <h3>{{$classCashFundCount}}</h3>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
