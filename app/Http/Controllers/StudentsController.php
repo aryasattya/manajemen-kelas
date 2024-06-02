@@ -6,7 +6,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\Students;
 use App\Models\Attendance;
-use App\Models\User;
+
 
 use Carbon\Carbon;
 
@@ -25,12 +25,12 @@ class StudentsController extends Controller
                 ->orWhere('phone', 'like', '%' . $search . '%');
         }
 
-        $users = User::all();
+       
 
         $title = 'Daftar siswa';
-        $students = $query->with('user')->get();
+        $students = $query->get();
 
-        return view('students.index', compact('students', 'title', 'users'));
+        return view('students.index', compact('students', 'title', ));
     }
 
     public function show(Students $student)
@@ -50,14 +50,7 @@ class StudentsController extends Controller
             'address' => 'required|string',
             'major' => 'required|string',
             'phone' => 'required|string',
-            'user_id' => [
-                'required',
-                Rule::unique('students')->where(function ($query) use ($request) {
-                    return $query->where('user_id', $request->user_id);
-                }),
-            ],
-        ], [
-            'user_id.unique' => 'Siswa dengan username tersebut sudah tersedia.'
+           
         ]);
 
         Students::create($validatedData);
@@ -75,12 +68,7 @@ class StudentsController extends Controller
             'address' => 'required|string',
             'major' => 'required|string',
             'phone' => 'required|string',
-            'user_id' => [
-                'required',
-                Rule::unique('students')->ignore($student),
-            ],
-        ], [
-            'user_id.unique' => 'Siswa dengan username tersebut sudah tersedia.'
+    
         ]);
 
 
@@ -92,9 +80,9 @@ class StudentsController extends Controller
     public function edit(Students $student)
     {
 
-        $users = User::all();
+     
         $title = 'Edit Siswa';
-        return view('students.edit', compact('student', 'title', 'users'));
+        return view('students.edit', compact('student', 'title'));
     }
 
 

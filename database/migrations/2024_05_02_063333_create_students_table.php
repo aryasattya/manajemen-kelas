@@ -17,9 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('major');
-            $table->string('phone');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->index('user_foreignId');
-
+            $table->string('phone');   
             $table->timestamps();
         });
     }

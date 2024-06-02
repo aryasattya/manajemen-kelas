@@ -52,12 +52,6 @@
                                 readonly>
                         </div>
 
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" value="{{ $student->user->username }}"
-                                readonly>
-                        </div>
-
 
 
                         <div class="card-footer">

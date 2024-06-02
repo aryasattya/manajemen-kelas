@@ -44,21 +44,7 @@
                                     <input type="phone" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
                                 </div>
 
-                               
-                                    <div class="form-group">
-                                        <label for="user_id">Username</label>
-                                        <select name="user_id" id="user_id" class="form-control">
-                                            @foreach ($users as $item)
-                                                <option value="{{ $item->id }}" class="form-control">{{ $item->username }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                               
-
-                              
-                                   
-                        
+                    
                                                     
                             </div>
                             <div class="card-footer">

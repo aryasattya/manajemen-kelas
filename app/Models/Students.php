@@ -17,14 +17,11 @@ class Students extends Model
         'phone',
         'address',
         'major',
-        'user_id'
+      
     ];
 
   
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+   
 
     public function attendances()
     {
