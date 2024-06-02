@@ -11,21 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengeluaran', function (Blueprint $table) {
+        Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->string('jenis_pengeluaran');
-            $table->string('keterangan');
-            $table->double('total_pengeluaran');
-            $table->date('tanggal');
-            $table->timestamps();
+            $table->string('expense_type'); 
+            $table->string('description');
+            $table->double('total_amount'); 
+            $table->date('date'); 
+            $table->timestamps(); 
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengeluaran');
+        Schema::dropIfExists('expenses');
     }
 };
