@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kas', function (Blueprint $table) {
+        Schema::create('class_cash_fund', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('user_id')->references('id')->on('users')->onDelete('cascade')->index('user_foreignId');
-            $table->enum('status', ['Sudah_bayar' , 'belum_bayar']);
-            $table->date('tanggal');
-            $table->timestamps();
+            $table->foreignId('user_id')
+                  ->constrained('users')
+                  ->onDelete('cascade')
+                  ->index('user_foreignId');
+            $table->enum('status', ['paid', 'unpaid']); 
+            $table->date('date'); 
+            $table->timestamps(); 
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kas');
+        Schema::dropIfExists('class_cash_fund');
     }
 };
