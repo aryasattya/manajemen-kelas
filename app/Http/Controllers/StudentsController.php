@@ -95,6 +95,10 @@ public function edit(Students $student){
     return view('students.edit', compact('student', 'title', 'users'));
 }
 
+public function absen(Students $student){
+
+}
+
 public function destroy(Students $student)
 {
     $student->delete();
