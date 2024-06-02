@@ -61,84 +61,12 @@
             </ul>
           </li>
 
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link {{ request()->is('products') ? 'active' : '' }}" >
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Produk
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link {{ request()->is('products') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Semua Produk</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link {{ request()->is('products/create') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tambah Produk</p>
-                </a>
-              </li>
+         
 
-              
-            </ul>
-          </li>
-
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link {{ request()->is('customers') ? 'active' : '' }}" >
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Kostumer
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link {{ request()->is('customers') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Kostumer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link {{ request()->is('customers/create') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tambah Kostumer</p>
-                </a>
-              </li>
-            </ul>
-            </li>
+         
 
 
-              <li class="nav-item menu-open">
-                <a href="#" class="nav-link {{ request()->is('transactions') ? 'active' : '' }}" >
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>
-                    Transaksi
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="" class="nav-link {{ request()->is('transactions') ? 'active' : '' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Transaksi</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="" class="nav-link {{ request()->is('transactions/create') ? 'active' : '' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Tambah Transaksi</p>
-                    </a>
-                  </li>
-
-              
-            </ul>
+     
          
 
           <li class="nav-item">
