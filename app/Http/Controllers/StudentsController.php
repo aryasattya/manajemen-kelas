@@ -105,10 +105,10 @@ class StudentsController extends Controller
 
         $watcht = $currentTime->toTimeString();
 
-        if ($currentTime->lte(Carbon::parse('07:30:00'))) {
+        if ($currentTime->between(Carbon::createFromTimeString('06:00:00'), Carbon::createFromTimeString('07:30:00'))) {
             $description = 'Tepat waktu';
-        } elseif ($currentTime->lte(Carbon::parse('09:00:00'))) {
-            $description = "Terlambat";
+        } elseif ($currentTime->between(Carbon::createFromTimeString('07:30:01'), Carbon::createFromTimeString('14:00:00'))) {
+            $description = 'Terlambat';
         } else {
             return redirect()->route('students.index')->with('error', 'Waktu absen telah berakhir.');
         }
