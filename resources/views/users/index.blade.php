@@ -105,7 +105,6 @@
                                     <tr>
                                         <th>Username</th>
                                         <th>Email</th>
-                                        <th>Role</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -114,7 +113,7 @@
                                         <tr>
                                             <td>{{ $data->username }}</td>
                                             <td>{{ $data->email }}</td>
-                                            <td>{{ $data->role }}</td>
+                                           
                                   
             
                                             </td>

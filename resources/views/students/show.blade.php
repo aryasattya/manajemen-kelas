@@ -58,11 +58,6 @@
                                 readonly>
                         </div>
 
-                        <div class="form-group">
-                            <label for="role">Role</label>
-                            <input type="text" class="form-control" id="role" value="{{ $student->user->role }}"
-                                readonly>
-                        </div>
 
 
                         <div class="card-footer">
