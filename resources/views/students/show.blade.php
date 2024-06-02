@@ -64,6 +64,11 @@
                                 readonly>
                         </div>
 
+
+                        <div class="card-footer">
+                            <a href="/students/{{$student->id}}/attendance/show" class="btn btn-primary btn-md">Absensi</a>
+                        </div>
+
                     </div>
                 </form>
             </div>
