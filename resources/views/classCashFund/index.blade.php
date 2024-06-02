@@ -41,7 +41,7 @@
 
                             <div class="form-group">
                                 <label for="amount">Harga</label>
-                                <input type="number" class="form-control" id="amount" name="amount" value="{{ old('amount') }}" required>
+                                <input type="number" class="form-control" id="amount" name="amount" value="5000" readonly required>
                             </div>
                         </div>
                         <div class="card-footer">

@@ -14,6 +14,7 @@ class DashboardController extends Controller
         $studentCount = Students::count();
         $classCashFundCount = ClassCashFund::count();
         $attendanceCount = Attendance::count();
+        $classCashFundCount = $classCashFundCount * 5000;
         $title = 'Dasboard';
         return view('dashboard', compact('title','attendanceCount','classCashFundCount','studentCount'));
     }

@@ -37,7 +37,7 @@
                   <i class="ion ion-stats-bars"></i>
 
                 </div>
-                <a href="" class="small-box-footer">Details <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('students.index')}}" class="small-box-footer">Details <i class="fas fa-arrow-circle-right"></i></a>
 
               </div>
             </div>
@@ -52,7 +52,7 @@
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="" class="small-box-footer">Details <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('attendance.index')}}" class="small-box-footer">Details <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
 
@@ -61,12 +61,12 @@
                 <div class="small-box bg-success p-4">
                   <div class="inner">
                     <h3>Jumlah Uang Kas</h3>
-                    <h3>{{$classCashFundCount}}</h3>
+                    <h3>Rp. {{$classCashFundCount}}</h3>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="" class="small-box-footer">Details <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{route('classCashFund.index')}}" class="small-box-footer">Details <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
           </div>
